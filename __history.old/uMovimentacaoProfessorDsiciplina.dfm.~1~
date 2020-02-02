@@ -1,0 +1,26 @@
+inherited frmCadBase1: TfrmCadBase1
+  Caption = 'frmCadBase1'
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pcPrincipal: TPageControl
+    inherited tsGrid: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 639
+      ExplicitHeight = 411
+      inherited pn: TPanel
+        ExplicitLeft = 526
+        ExplicitTop = 0
+      end
+    end
+    inherited tsEdits: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 639
+      ExplicitHeight = 411
+      inherited pnEditsButtons: TPanel
+        ExplicitLeft = 526
+      end
+    end
+  end
+end

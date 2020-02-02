@@ -1,0 +1,82 @@
+inherited frmCadastroProfessores: TfrmCadastroProfessores
+  Caption = 'Cadastro de Professores'
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pcPrincipal: TPageControl
+    ActivePage = tsEdits
+    inherited tsGrid: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 639
+      ExplicitHeight = 411
+      inherited pn: TPanel
+        ExplicitLeft = 526
+        ExplicitTop = 0
+      end
+    end
+    inherited tsEdits: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 639
+      ExplicitHeight = 411
+      object Label1: TLabel [0]
+        Left = 3
+        Top = 16
+        Width = 27
+        Height = 13
+        Caption = 'Nome'
+        FocusControl = dbeNome
+      end
+      object Label2: TLabel [1]
+        Left = 3
+        Top = 56
+        Width = 19
+        Height = 13
+        Caption = 'CPF'
+        FocusControl = dbeCPF
+      end
+      inherited pnEditsButtons: TPanel
+        ExplicitLeft = 526
+      end
+      object dbeNome: TDBEdit
+        Left = 3
+        Top = 31
+        Width = 300
+        Height = 21
+        DataField = 'NOME'
+        DataSource = dsDados
+        TabOrder = 1
+      end
+      object dbeCPF: TDBEdit
+        Left = 3
+        Top = 72
+        Width = 147
+        Height = 21
+        DataField = 'CPF'
+        DataSource = dsDados
+        TabOrder = 2
+      end
+    end
+  end
+  inherited qrDados: TFDQuery
+    SQL.Strings = (
+      'SELECT * FROM PROFESSORES;')
+    object qrDadosNOME: TStringField
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      Size = 100
+    end
+    object qrDadosCPF: TStringField
+      FieldName = 'CPF'
+      Origin = 'CPF'
+      EditMask = '999.999.999-99;0; '
+      Size = 11
+    end
+    object qrDadosID: TFDAutoIncField
+      FieldName = 'ID'
+      ReadOnly = True
+    end
+  end
+end

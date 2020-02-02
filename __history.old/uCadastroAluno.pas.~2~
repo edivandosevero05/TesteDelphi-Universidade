@@ -1,0 +1,44 @@
+unit uCadastroAluno;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uCadastroBase, Data.DB,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.Mask,
+  Vcl.DBCtrls;
+
+type
+  TfrmCadastroAluno = class(TfrmCadBase)
+    qrDadosNOME: TStringField;
+    qrDadosCPF: TStringField;
+    qrDadosID: TFDAutoIncField;
+    Label1: TLabel;
+    dbeNome: TDBEdit;
+    Label2: TLabel;
+    dbeCPF: TDBEdit;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmCadastroAluno: TfrmCadastroAluno;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmCadastroAluno.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  inherited;
+  frmCadastroAluno := nil;
+end;
+
+end.

@@ -1,0 +1,19 @@
+program Universidade;
+
+uses
+  Vcl.Forms,
+  uPrincipal in 'uPrincipal.pas' {frmPrincipal},
+  uCadastroBase in 'uCadastroBase.pas' {frmCadBase},
+  udmPrincipal in 'udmPrincipal.pas' {dmPrincipal: TDataModule},
+  uSystemutils in 'uSystemutils.pas',
+  uDisciplina in 'uDisciplina.pas' {frmDsiciplina};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TdmPrincipal, dmPrincipal);
+  Application.Run;
+end.
