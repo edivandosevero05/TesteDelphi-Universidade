@@ -1,0 +1,95 @@
+unit uMovimentacaoNota;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uCadastroBase, Data.DB,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.DBCtrls,
+  Vcl.Mask;
+
+type
+  TfrmMovimentacaoNota = class(TfrmCadBase)
+    qrAlunos: TFDQuery;
+    dsAlunos: TDataSource;
+    dsDisciplinas: TDataSource;
+    qrDisciplinas: TFDQuery;
+    dsProfessores: TDataSource;
+    qrProfessores: TFDQuery;
+    qrDadosDISCIPLINA_ID: TIntegerField;
+    qrDadosALUNO_ID: TIntegerField;
+    qrDadosPROFESSOR_ID: TIntegerField;
+    qrDadosNOTA_PERIODO_1: TSingleField;
+    qrDadosNOTA_PERIODO_2: TSingleField;
+    qrDadosNOTA_TRABLHO: TSingleField;
+    qrDadosMEDIA: TSingleField;
+    qrDadosSITUACAO: TStringField;
+    qrDadosALUNO: TStringField;
+    qrDadosPROFESSOR: TStringField;
+    qrDadosDISCIPLINA: TStringField;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    edPrimeiroPeriodo: TDBEdit;
+    Label5: TLabel;
+    edSegundoPeriodo: TDBEdit;
+    Label6: TLabel;
+    edTrabalho: TDBEdit;
+    lkProfessor: TDBLookupComboBox;
+    lkDisciplina: TDBLookupComboBox;
+    lkAluno: TDBLookupComboBox;
+    qrUpdate: TFDQuery;
+    procedure btSalvarClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmMovimentacaoNota: TfrmMovimentacaoNota;
+
+implementation
+
+{$R *.dfm}
+
+uses udmPrincipal;
+
+procedure TfrmMovimentacaoNota.btSalvarClick(Sender: TObject);
+var
+  media, nota1, nota2, nota3: Double;
+  situacao: string;
+
+begin
+  inherited;
+  nota1 := StrToFloat(edPrimeiroPeriodo.Text);
+  nota2 := StrToFloat(edSegundoPeriodo.Text);
+  nota3 := StrToFloat(edTrabalho.Text);
+  media := ( nota1 + nota2  + nota3) / 3;
+  if (edPrimeiroPeriodo.Text <> '') and (edSegundoPeriodo.Text <> '') and (edTrabalho.Text <> '') then
+  begin
+    if media >= 7  then
+    begin
+      situacao := 'Aprovado';
+    end
+    else if media < 7 then
+    begin
+      situacao := 'Reprovado';
+    end;
+
+    qrUpdate.Open;
+    qrUpdate.SQL.Text := 'UPDATE NOTAS SET MEDIA = :MEDIA, SITUACAO = :SITUACAO ' +
+                         'WHERE ALUNO_ID = ' + qrDadosALUNO_ID.AsString +
+                         'AND DISCIPLINA_ID = ' + qrDadosDISCIPLINA_ID.AsString +
+                         'AND PROFESSOR_ID = ' + qrDadosPROFESSOR_ID.AsString;
+    qrUpdate.ParamByName('MEDIA').AsFloat := media;
+    qrUpdate.ParamByName('SITUACAO').AsString := situacao;
+    qrUpdate.ExecSQL;
+    qrDados.Refresh;
+  end;
+end;
+end.

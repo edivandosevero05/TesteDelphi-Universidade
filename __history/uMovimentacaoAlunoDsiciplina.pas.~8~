@@ -1,0 +1,67 @@
+unit uMovimentacaoAlunoDsiciplina;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uCadastroBase, Data.DB,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.DBCtrls,
+  Vcl.Mask;
+
+type
+  TfrmMovimentacaoAlunoDisciplina = class(TfrmCadBase)
+    qrAluno: TFDQuery;
+    qrDisciplina: TFDQuery;
+    dsAluno: TDataSource;
+    dsDisciplina: TDataSource;
+    qrDadosDISCIPLINA_ID: TIntegerField;
+    qrDadosALUNO_ID: TIntegerField;
+    qrDadosALUNO: TStringField;
+    qrDadosDISCIPLINA: TStringField;
+    Label1: TLabel;
+    Label2: TLabel;
+    lkAluno: TDBLookupComboBox;
+    lkDisciplina: TDBLookupComboBox;
+    qrProfessor: TFDQuery;
+    dsProfessor: TDataSource;
+    qrDadosPROFESSOR_ID: TIntegerField;
+    qrDadosPROFESSOR: TStringField;
+    Label3: TLabel;
+    lkProfessor: TDBLookupComboBox;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmMovimentacaoAlunoDisciplina: TfrmMovimentacaoAlunoDisciplina;
+
+implementation
+
+{$R *.dfm}
+
+uses udmPrincipal;
+
+procedure TfrmMovimentacaoAlunoDisciplina.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  inherited;
+  qrAluno.Close;
+  qrDisciplina.Close;
+  frmMovimentacaoAlunoDisciplina := nil;
+end;
+
+procedure TfrmMovimentacaoAlunoDisciplina.FormShow(Sender: TObject);
+begin
+  inherited;
+  qrAluno.Open;
+  qrDisciplina.Open;
+end;
+
+end.

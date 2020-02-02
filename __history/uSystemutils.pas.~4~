@@ -1,0 +1,29 @@
+unit uSystemUtils;
+
+interface
+
+function MsgConfirm(aMessage: string): boolean;
+function CalculaMedia(nota1: string; nota2: string; nota3: string): Float32;
+procedure MsgWarning(aMessage: string);
+
+
+implementation
+
+uses
+  Vcl.Forms, Winapi.Windows, System.SysUtils;
+
+function MsgConfirm(aMessage: string): boolean;
+begin
+  Result := Application.MessageBox(PWideChar(aMessage), 'Universidade', MB_YESNO + MB_ICONQUESTION + MB_DEFBUTTON2) = ID_YES;
+end;
+function CalculaMedia(nota1: string; nota2: string; nota3: string): Float32;
+begin
+  Result := (StrToFloat(nota1) + StrToFloat(nota2) + StrToFloat(nota3)) /3;
+end;
+
+procedure MsgWarning(aMessage: string);
+begin
+  Application.MessageBox(PWideChar(aMessage), 'Universidade', MB_OK + MB_ICONWARNING);
+end;
+
+end.

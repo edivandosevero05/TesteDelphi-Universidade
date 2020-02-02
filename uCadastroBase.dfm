@@ -13,6 +13,7 @@ object frmCadBase: TfrmCadBase
   FormStyle = fsMDIChild
   OldCreateOrder = False
   Visible = True
+  WindowState = wsMaximized
   OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
@@ -70,6 +71,7 @@ object frmCadBase: TfrmCadBase
         Height = 411
         Align = alClient
         DataSource = dsDados
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
         TabOrder = 1
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
@@ -81,6 +83,10 @@ object frmCadBase: TfrmCadBase
     object tsEdits: TTabSheet
       Caption = 'tsEdits'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object pnEditsButtons: TPanel
         Left = 526
         Top = 0

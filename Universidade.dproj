@@ -127,7 +127,19 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="uMovimentacaoProfessorDsiciplina.pas">
-            <Form>frmCadBase1</Form>
+            <Form>frmMovimentacaoProfessorDisciplina</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uMovimentacaoAlunoDsiciplina.pas">
+            <Form>frmMovimentacaoAlunoDisciplina</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uMovimentacaoNota.pas">
+            <Form>frmMovimentacaoNota</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uRelatorioAlunos.pas">
+            <Form>frmRelatorioAlunos</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

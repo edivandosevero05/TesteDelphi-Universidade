@@ -1,43 +1,59 @@
-inherited frmCadBase1: TfrmCadBase1
-  Caption = 'frmCadBase1'
+inherited frmMovimentacaoProfessorDisciplina: TfrmMovimentacaoProfessorDisciplina
+  Caption = 'Movimenta'#231#227'o  Professor/Disciplina'
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcPrincipal: TPageControl
     ActivePage = tsEdits
-    inherited tsGrid: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 639
-      ExplicitHeight = 411
-      inherited pn: TPanel
-        ExplicitLeft = 526
-        ExplicitTop = 0
-      end
-    end
     inherited tsEdits: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 639
-      ExplicitHeight = 411
       object Label1: TLabel [0]
-        Left = 104
-        Top = 64
-        Width = 57
-        Height = 13
-        Caption = 'DISCIPLINA'
-        FocusControl = DBEdit1
+        Left = 32
+        Top = 66
+        Width = 53
+        Height = 16
+        Caption = 'Disciplina'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
       end
-      inherited pnEditsButtons: TPanel
-        ExplicitLeft = 526
+      object Label2: TLabel [1]
+        Left = 32
+        Top = 16
+        Width = 54
+        Height = 16
+        Caption = 'Professor'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
       end
-      object DBEdit1: TDBEdit
-        Left = 104
-        Top = 80
-        Width = 89
+      object lkDisciplina: TDBLookupComboBox
+        Left = 32
+        Top = 85
+        Width = 200
         Height = 21
         DataField = 'DISCIPLINA'
         DataSource = dsDados
+        KeyField = 'ID'
+        ListField = 'DISCIPLINA'
+        ListSource = dsDisciplina
         TabOrder = 1
+      end
+      object lkProfessor: TDBLookupComboBox
+        Left = 32
+        Top = 35
+        Width = 200
+        Height = 21
+        DataField = 'PROFESSOR'
+        DataSource = dsDados
+        KeyField = 'ID'
+        ListField = 'NOME'
+        ListSource = dsProfessor
+        TabOrder = 2
       end
     end
   end
@@ -51,7 +67,29 @@ inherited frmCadBase1: TfrmCadBase1
       LookupKeyFields = 'ID'
       LookupResultField = 'DISCIPLINA'
       KeyFields = 'DISCIPLINA_ID'
-      Size = 0
+      Lookup = True
+    end
+    object qrDadosDISCIPLINA_ID: TIntegerField
+      FieldName = 'DISCIPLINA_ID'
+      Origin = 'DISCIPLINA_ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      Visible = False
+    end
+    object qrDadosPROFESSOR_ID: TIntegerField
+      FieldName = 'PROFESSOR_ID'
+      Origin = 'PROFESSOR_ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      Visible = False
+    end
+    object qrDadosPROFESSOR: TStringField
+      FieldKind = fkLookup
+      FieldName = 'PROFESSOR'
+      LookupDataSet = qrProfessor
+      LookupKeyFields = 'ID'
+      LookupResultField = 'NOME'
+      KeyFields = 'PROFESSOR_ID'
       Lookup = True
     end
   end
@@ -66,6 +104,38 @@ inherited frmCadBase1: TfrmCadBase1
   object dsDisciplina: TDataSource
     DataSet = qrDisciplina
     Left = 336
+    Top = 280
+  end
+  object qrProfessor: TFDQuery
+    Active = True
+    Connection = dmPrincipal.fdConn
+    SQL.Strings = (
+      'SELECT * FROM PROFESSORES;')
+    Left = 404
+    Top = 216
+    object qrProfessorID: TIntegerField
+      FieldName = 'ID'
+      Origin = 'ID'
+      Required = True
+    end
+    object qrProfessorNOME: TStringField
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      Size = 100
+    end
+    object qrProfessorCPF: TStringField
+      FieldName = 'CPF'
+      Origin = 'CPF'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      Size = 14
+    end
+  end
+  object dsProfessor: TDataSource
+    DataSet = qrProfessor
+    Left = 404
     Top = 280
   end
 end

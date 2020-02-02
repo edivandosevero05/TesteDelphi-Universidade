@@ -45,6 +45,14 @@ object frmPrincipal: TfrmPrincipal
     end
     object Movimentos1: TMenuItem
       Caption = 'Movimentos'
+      object ProfessorDisciplina1: TMenuItem
+        Caption = 'Professor/Disciplina'
+        OnClick = ProfessorDisciplina1Click
+      end
+      object AlunoDisciplina1: TMenuItem
+        Caption = 'Aluno/Disciplina'
+        OnClick = AlunoDisciplina1Click
+      end
     end
     object Relatrios1: TMenuItem
       Caption = 'Relat'#243'rios'

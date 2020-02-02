@@ -1,0 +1,108 @@
+inherited frmMovimentacaoAlunoDisciplina: TfrmMovimentacaoAlunoDisciplina
+  Caption = 'Movimenta'#231#227'o Aluno/Disciplina'
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited pcPrincipal: TPageControl
+    ActivePage = tsEdits
+    inherited tsEdits: TTabSheet
+      ExplicitLeft = 0
+      ExplicitTop = -16
+      object Label1: TLabel [0]
+        Left = 32
+        Top = 16
+        Width = 34
+        Height = 13
+        Caption = 'ALUNO'
+      end
+      object Label2: TLabel [1]
+        Left = 32
+        Top = 68
+        Width = 57
+        Height = 13
+        Caption = 'DISCIPLINA'
+      end
+      object lkAluno: TDBLookupComboBox
+        Left = 32
+        Top = 35
+        Width = 200
+        Height = 21
+        DataField = 'ALUNO'
+        DataSource = dsDados
+        KeyField = 'ID'
+        ListField = 'NOME'
+        ListSource = dsAluno
+        TabOrder = 1
+      end
+      object lkDisciplina: TDBLookupComboBox
+        Left = 32
+        Top = 87
+        Width = 200
+        Height = 21
+        DataField = 'ALUNO'
+        DataSource = dsDados
+        KeyField = 'ID'
+        ListField = 'DISCIPLINA'
+        ListSource = dsDisciplina
+        TabOrder = 2
+      end
+    end
+  end
+  inherited qrDados: TFDQuery
+    SQL.Strings = (
+      'SELECT * FROM DISCIPLINAS_ALUNOS;')
+    object qrDadosDISCIPLINA_ID: TIntegerField
+      FieldName = 'DISCIPLINA_ID'
+      Origin = 'DISCIPLINA_ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qrDadosALUNO_ID: TIntegerField
+      FieldName = 'ALUNO_ID'
+      Origin = 'ALUNO_ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qrDadosALUNO: TStringField
+      FieldKind = fkLookup
+      FieldName = 'ALUNO'
+      LookupDataSet = qrAluno
+      LookupKeyFields = 'ID'
+      LookupResultField = 'NOME'
+      KeyFields = 'ALUNO_ID'
+      Lookup = True
+    end
+    object qrDadosDISCIPLINA: TStringField
+      FieldKind = fkLookup
+      FieldName = 'DISCIPLINA'
+      LookupDataSet = qrDisciplina
+      LookupKeyFields = 'ID'
+      LookupResultField = 'DISCIPLINA'
+      KeyFields = 'DISCIPLINA_ID'
+      Lookup = True
+    end
+  end
+  object qrAluno: TFDQuery
+    Connection = dmPrincipal.fdConn
+    SQL.Strings = (
+      'SELECT * FROM ALUNOS;')
+    Left = 328
+    Top = 296
+  end
+  object qrDisciplina: TFDQuery
+    Connection = dmPrincipal.fdConn
+    SQL.Strings = (
+      'SELECT * FROM DISCIPLINAS;')
+    Left = 408
+    Top = 296
+  end
+  object dsAluno: TDataSource
+    DataSet = qrAluno
+    Left = 328
+    Top = 352
+  end
+  object dsDisciplina: TDataSource
+    DataSet = qrDisciplina
+    Left = 408
+    Top = 352
+  end
+end

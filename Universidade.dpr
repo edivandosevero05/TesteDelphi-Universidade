@@ -9,7 +9,10 @@ uses
   uCadastroProfessor in 'uCadastroProfessor.pas' {frmCadastroProfessores},
   uCadastroDisciplina in 'uCadastroDisciplina.pas' {frmCadastroDsiciplina},
   uCadastroAluno in 'uCadastroAluno.pas' {frmCadastroAluno},
-  uMovimentacaoProfessorDsiciplina in 'uMovimentacaoProfessorDsiciplina.pas' {frmCadBase1};
+  uMovimentacaoProfessorDsiciplina in 'uMovimentacaoProfessorDsiciplina.pas' {frmMovimentacaoProfessorDisciplina},
+  uMovimentacaoAlunoDsiciplina in 'uMovimentacaoAlunoDsiciplina.pas' {frmMovimentacaoAlunoDisciplina},
+  uMovimentacaoNota in 'uMovimentacaoNota.pas' {frmMovimentacaoNota},
+  uRelatorioAlunos in 'uRelatorioAlunos.pas' {frmRelatorioAlunos};
 
 {$R *.res}
 
@@ -18,6 +21,7 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TdmPrincipal, dmPrincipal);
-  Application.CreateForm(TfrmCadBase1, frmCadBase1);
+  Application.CreateForm(TfrmMovimentacaoNota, frmMovimentacaoNota);
+  Application.CreateForm(TfrmRelatorioAlunos, frmRelatorioAlunos);
   Application.Run;
 end.
