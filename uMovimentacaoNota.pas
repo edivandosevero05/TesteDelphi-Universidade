@@ -42,8 +42,9 @@ type
     lkProfessor: TDBLookupComboBox;
     lkDisciplina: TDBLookupComboBox;
     lkAluno: TDBLookupComboBox;
-    qrUpdate: TFDQuery;
+    qrDadosDataSource: TDataSource;
     procedure btSalvarClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   protected
@@ -81,6 +82,13 @@ begin
     qrDadosSITUACAO.Value := 'Reprovado';
   end;
 
+end;
+
+procedure TfrmMovimentacaoNota.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  inherited;
+  frmMovimentacaoNota := nil;
 end;
 
 function TfrmMovimentacaoNota.ValidarObrigatorios: boolean;

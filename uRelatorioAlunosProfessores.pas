@@ -1,0 +1,77 @@
+unit uRelatorioAlunosProfessores;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, RLReport, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+
+type
+  TfrmRelatorioAlunosProfessores = class(TForm)
+    rpAlunosProfessores: TRLReport;
+    RLBand1: TRLBand;
+    rlTitulo: TRLLabel;
+    RLBand2: TRLBand;
+    RLLabel1: TRLLabel;
+    RLLabel2: TRLLabel;
+    RLBand3: TRLBand;
+    qrDados: TFDQuery;
+    dsDados: TDataSource;
+    RLLabel3: TRLLabel;
+    qrProfessor: TFDQuery;
+    dsProfessor: TDataSource;
+    qrAluno: TFDQuery;
+    dsAluno: TDataSource;
+    qrDadosALUNO: TStringField;
+    qrProfessorID: TIntegerField;
+    qrProfessorNOME: TStringField;
+    qrProfessorCPF: TStringField;
+    qrDadosID: TIntegerField;
+    qrDadosDISCIPLINA_ID: TIntegerField;
+    qrDadosALUNO_ID: TIntegerField;
+    qrDadosPROFESSOR_ID: TIntegerField;
+    qrDadosNOTA_PERIODO_1: TSingleField;
+    qrDadosNOTA_PERIODO_2: TSingleField;
+    qrDadosNOTA_TRABLHO: TSingleField;
+    qrDadosMEDIA: TSingleField;
+    qrDadosSITUACAO: TStringField;
+    qrDadosPROFESSOR: TStringField;
+    RLDBText1: TRLDBText;
+    RLDBText2: TRLDBText;
+    RLDBText3: TRLDBText;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure rpAlunosProfessoresBeforePrint(Sender: TObject;
+      var PrintIt: Boolean);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmRelatorioAlunosProfessores: TfrmRelatorioAlunosProfessores;
+
+implementation
+
+{$R *.dfm}
+
+uses udmPrincipal;
+
+procedure TfrmRelatorioAlunosProfessores.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  frmRelatorioAlunosProfessores := nil;
+end;
+
+procedure TfrmRelatorioAlunosProfessores.rpAlunosProfessoresBeforePrint(
+  Sender: TObject; var PrintIt: Boolean);
+begin
+  qrDados.Open;
+  qrAluno.Open;
+  qrProfessor.Open;
+end;
+
+end.

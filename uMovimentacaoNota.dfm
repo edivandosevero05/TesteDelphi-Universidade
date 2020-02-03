@@ -4,6 +4,12 @@ inherited frmMovimentacaoNota: TfrmMovimentacaoNota
   TextHeight = 13
   inherited pcPrincipal: TPageControl
     ActivePage = tsEdits
+    inherited tsGrid: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 639
+      ExplicitHeight = 411
+    end
     inherited tsEdits: TTabSheet
       ExplicitLeft = 8
       ExplicitTop = 28
@@ -95,10 +101,10 @@ inherited frmMovimentacaoNota: TfrmMovimentacaoNota
       end
       object lkDisciplina: TDBLookupComboBox
         Left = 32
-        Top = 111
+        Top = 109
         Width = 145
         Height = 21
-        DataField = 'DISCIPLINA_ID'
+        DataField = 'ID'
         DataSource = dsDados
         KeyField = 'ID'
         ListField = 'DISCIPLINA'
@@ -107,14 +113,14 @@ inherited frmMovimentacaoNota: TfrmMovimentacaoNota
       end
       object lkProfessor: TDBLookupComboBox
         Left = 32
-        Top = 71
+        Top = 69
         Width = 145
         Height = 21
         DataField = 'PROFESSOR_ID'
         DataSource = dsDados
         KeyField = 'ID'
-        ListField = 'NOME'
-        ListSource = dsProfessores
+        ListField = 'PROFESSOR'
+        ListSource = dsDados
         TabOrder = 6
       end
     end
@@ -237,11 +243,9 @@ inherited frmMovimentacaoNota: TfrmMovimentacaoNota
     Left = 468
     Top = 288
   end
-  object qrUpdate: TFDQuery
-    Connection = dmPrincipal.fdConn
-    SQL.Strings = (
-      'SELECT * FROM ALUNOS;')
-    Left = 220
-    Top = 288
+  object qrDadosDataSource: TDataSource
+    DataSet = qrAlunos
+    Left = 324
+    Top = 344
   end
 end

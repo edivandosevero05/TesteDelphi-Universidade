@@ -3,6 +3,13 @@ inherited frmMovimentacaoNota: TfrmMovimentacaoNota
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcPrincipal: TPageControl
+    ActivePage = tsEdits
+    inherited tsGrid: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
+      ExplicitWidth = 639
+      ExplicitHeight = 411
+    end
     inherited tsEdits: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24
@@ -94,7 +101,7 @@ inherited frmMovimentacaoNota: TfrmMovimentacaoNota
       end
       object lkDisciplina: TDBLookupComboBox
         Left = 32
-        Top = 111
+        Top = 109
         Width = 145
         Height = 21
         DataField = 'DISCIPLINA_ID'
@@ -150,12 +157,6 @@ inherited frmMovimentacaoNota: TfrmMovimentacaoNota
       LookupResultField = 'DISCIPLINA'
       KeyFields = 'DISCIPLINA_ID'
       Lookup = True
-    end
-    object qrDadosID: TIntegerField
-      FieldName = 'ID'
-      Origin = 'ID'
-      Required = True
-      Visible = False
     end
     object qrDadosDISCIPLINA_ID: TIntegerField
       FieldName = 'DISCIPLINA_ID'

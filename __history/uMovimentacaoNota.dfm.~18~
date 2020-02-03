@@ -3,9 +3,10 @@ inherited frmMovimentacaoNota: TfrmMovimentacaoNota
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcPrincipal: TPageControl
+    ActivePage = tsEdits
     inherited tsEdits: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
+      ExplicitLeft = 8
+      ExplicitTop = 28
       ExplicitWidth = 639
       ExplicitHeight = 411
       object Label1: TLabel [0]
