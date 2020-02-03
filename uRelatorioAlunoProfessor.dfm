@@ -12,7 +12,6 @@ object frmRelatorioAlunoProfessor: TfrmRelatorioAlunoProfessor
   Font.Style = []
   OldCreateOrder = False
   OnClose = FormClose
-  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object rpAlunoProfessor: TRLReport
@@ -26,6 +25,7 @@ object frmRelatorioAlunoProfessor: TfrmRelatorioAlunoProfessor
     Font.Height = -13
     Font.Name = 'Arial'
     Font.Style = []
+    BeforePrint = rpAlunoProfessorBeforePrint
     object rlbHeader: TRLBand
       Left = 38
       Top = 38

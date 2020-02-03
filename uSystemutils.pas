@@ -5,7 +5,6 @@ interface
 function MsgConfirm(aMessage: string): boolean;
 procedure MsgWarning(aMessage: string);
 
-
 implementation
 
 uses

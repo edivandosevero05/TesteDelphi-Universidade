@@ -50,10 +50,10 @@ uses udmPrincipal;
 procedure TfrmMovimentacaoProfessorDisciplina.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  inherited;
   qrDisciplina.Close;
   qrProfessor.Close;
   frmMovimentacaoProfessorDisciplina := nil;
+  inherited;
 end;
 
 procedure TfrmMovimentacaoProfessorDisciplina.FormShow(Sender: TObject);
@@ -65,7 +65,7 @@ end;
 
 function TfrmMovimentacaoProfessorDisciplina.ValidarObrigatorios: boolean;
 begin
-   if Trim(lkProfessor.Text) = '' then
+  if Trim(lkProfessor.Text) = '' then
   begin
     ShowMessage('Selecione o professor.');
     lkProfessor.SetFocus;
@@ -77,6 +77,7 @@ begin
     lkDisciplina.SetFocus;
     Exit(false)
   end;
+
   Result := inherited ValidarObrigatorios;
 end;
 

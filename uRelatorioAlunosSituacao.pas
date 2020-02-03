@@ -67,7 +67,7 @@ type
     rbtDisciplina: TRLDBText;
     rbtProfessor: TRLDBText;
     procedure F(Sender: TObject; var Action: TCloseAction);
-    procedure FormShow(Sender: TObject);
+    procedure rpAlunosBeforePrint(Sender: TObject; var PrintIt: Boolean);
   private
     { Private declarations }
   public
@@ -86,15 +86,11 @@ uses udmPrincipal;
 procedure TfrmRelatorioAlunos.F(Sender: TObject;
   var Action: TCloseAction);
 begin
-  qrDados.Close;
-  qrAlunos.Close;
-  qrProfessor.Close;
-  qrDisciplina.Close;
   frmRelatorioAlunos := nil;
-
 end;
 
-procedure TfrmRelatorioAlunos.FormShow(Sender: TObject);
+procedure TfrmRelatorioAlunos.rpAlunosBeforePrint(Sender: TObject;
+  var PrintIt: Boolean);
 begin
   qrDados.Open;
   qrAlunos.Open;

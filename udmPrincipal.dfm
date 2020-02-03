@@ -1,5 +1,7 @@
 object dmPrincipal: TdmPrincipal
   OldCreateOrder = False
+  OnCreate = DataModuleCreate
+  OnDestroy = DataModuleDestroy
   Height = 352
   Width = 485
   object fdConn: TFDConnection
@@ -10,7 +12,6 @@ object dmPrincipal: TdmPrincipal
       'User_Name=sysdba'
       'Password=masterkey'
       'DriverID=FB')
-    Connected = True
     LoginPrompt = False
     Left = 32
     Top = 32

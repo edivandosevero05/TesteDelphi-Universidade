@@ -51,7 +51,6 @@ type
     procedure qrDadosBeforePost(DataSet: TDataSet);
     procedure FormShow(Sender: TObject);
     procedure lkDisciplinaEnter(Sender: TObject);
-    procedure lkProfessorExit(Sender: TObject);
   private
     { Private declarations }
   protected
@@ -73,12 +72,12 @@ uses udmPrincipal, uSystemutils;
 procedure TfrmMovimentacaoNota.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  inherited;
   qrDados.Close;
   qrAlunos.Close;
   qrProfessores.Close;
   qrDisciplinas.Close;
   frmMovimentacaoNota := nil;
+  inherited;
 end;
 
 procedure TfrmMovimentacaoNota.FormShow(Sender: TObject);
@@ -96,13 +95,6 @@ begin
   qrDisciplinaAuxiliar.Close;
   qrDisciplinaAuxiliar.ParamByName('PROFESSORID').AsInteger := qrDadosPROFESSOR_ID.Value;
   qrDisciplinaAuxiliar.Open;
-end;
-
-procedure TfrmMovimentacaoNota.lkProfessorExit(Sender: TObject);
-begin
-  inherited;
-  //qrProfessorAuxiliar.Close;
-  //qrProfessorAuxiliar.ParamByName('PROFESSORID').AsInteger := qrDadosPROFESSOR_ID.Value;
 end;
 
 procedure TfrmMovimentacaoNota.qrDadosBeforePost(DataSet: TDataSet);
@@ -146,7 +138,8 @@ begin
     lkDisciplina.SetFocus;
     Exit(false)
   end;
-    Result := inherited ValidarObrigatorios;
+
+  Result := inherited ValidarObrigatorios;
 end;
 
 end.

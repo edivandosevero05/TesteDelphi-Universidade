@@ -1,0 +1,18 @@
+object dmPrincipal: TdmPrincipal
+  OldCreateOrder = False
+  OnCreate = DataModuleCreate
+  Height = 352
+  Width = 485
+  object fdConn: TFDConnection
+    Params.Strings = (
+      
+        'Database=C:\Users\ti\Documents\Embarcadero\Studio\Projects\BD\UN' +
+        'IVERSIDADE.FDB'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'DriverID=FB')
+    LoginPrompt = False
+    Left = 32
+    Top = 32
+  end
+end

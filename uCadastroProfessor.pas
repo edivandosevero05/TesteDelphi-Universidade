@@ -40,9 +40,9 @@ implementation
 procedure TfrmCadastroProfessores.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  inherited;
   qrDados.Close;
   frmCadastroProfessores := nil;
+  inherited;
 end;
 
 procedure TfrmCadastroProfessores.FormShow(Sender: TObject);
@@ -65,7 +65,8 @@ begin
     dbeCPF.SetFocus;
     Exit(false)
   end;
-    Result := inherited ValidarObrigatorios;
+
+  Result := inherited ValidarObrigatorios;
 end;
 
 end.

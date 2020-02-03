@@ -38,9 +38,9 @@ implementation
 
 procedure TfrmCadastroDsiciplina.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  inherited;
   qrDados.Close;
   frmCadastroDsiciplina := nil;
+  inherited;
 end;
 
 procedure TfrmCadastroDsiciplina.FormShow(Sender: TObject);
@@ -57,7 +57,8 @@ begin
     dbeDisciplina.SetFocus;
     Exit(false)
   end;
-    Result := inherited ValidarObrigatorios;
+
+  Result := inherited ValidarObrigatorios;
 end;
 
 end.

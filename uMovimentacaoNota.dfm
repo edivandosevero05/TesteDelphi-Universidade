@@ -123,7 +123,6 @@ inherited frmMovimentacaoNota: TfrmMovimentacaoNota
         ListField = 'NOME'
         ListSource = dsProfessores
         TabOrder = 6
-        OnExit = lkProfessorExit
       end
     end
   end

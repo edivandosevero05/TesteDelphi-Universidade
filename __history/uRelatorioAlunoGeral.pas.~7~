@@ -1,0 +1,97 @@
+unit uRelatorioAlunoGeral;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, RLReport, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+
+type
+  TfrmRelatorioAlunoGeral = class(TForm)
+    rpListagemAluno: TRLReport;
+    rlbHeader: TRLBand;
+    rllTitulo: TRLLabel;
+    qrProfessor: TFDQuery;
+    qrProfessorID: TIntegerField;
+    qrProfessorNOME: TStringField;
+    qrProfessorCPF: TStringField;
+    qrDisciplina: TFDQuery;
+    qrDisciplinaID: TIntegerField;
+    qrDisciplinaDISCIPLINA: TStringField;
+    qrAlunos: TFDQuery;
+    qrAlunosID: TIntegerField;
+    qrAlunosNOME: TStringField;
+    qrAlunosCPF: TStringField;
+    qrDados: TFDQuery;
+    qrDadosID: TIntegerField;
+    qrDadosDISCIPLINA_ID: TIntegerField;
+    qrDadosALUNO_ID: TIntegerField;
+    qrDadosPROFESSOR_ID: TIntegerField;
+    qrDadosNOTA_PERIODO_1: TSingleField;
+    qrDadosNOTA_PERIODO_2: TSingleField;
+    qrDadosNOTA_TRABLHO: TSingleField;
+    qrDadosMEDIA: TSingleField;
+    qrDadosSITUACAO: TStringField;
+    qrDadosALUNO: TStringField;
+    qrDadosDISCIPLINA: TStringField;
+    qrDadosPROFESSOR: TStringField;
+    dsDados: TDataSource;
+    dsAlunos: TDataSource;
+    dsDisciplina: TDataSource;
+    dsProfessor: TDataSource;
+    rlbBtHeader: TRLBand;
+    rllAluno: TRLLabel;
+    rllDisciplina: TRLLabel;
+    rllProfessor: TRLLabel;
+    rllNota1: TRLLabel;
+    rllNota2: TRLLabel;
+    rllNotaTrabalho: TRLLabel;
+    rllMedia: TRLLabel;
+    rllSituacao: TRLLabel;
+    rbBtDetalhes: TRLBand;
+    rbtAluno: TRLDBText;
+    rbtNota2: TRLDBText;
+    rbtNota1: TRLDBText;
+    rbtNotaTrabalho: TRLDBText;
+    rbtMedia: TRLDBText;
+    rbtSituacao: TRLDBText;
+    rbtDisciplina: TRLDBText;
+    rbtProfessor: TRLDBText;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure rpListagemAlunoBeforePrint(Sender: TObject; var PrintIt: Boolean);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmRelatorioAlunoGeral: TfrmRelatorioAlunoGeral;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmRelatorioAlunoGeral.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  qrDados.Close;
+  qrAlunos.Close;
+  qrProfessor.Close;
+  qrDisciplina.Close;
+  frmRelatorioAlunoGeral := nil;
+end;
+
+procedure TfrmRelatorioAlunoGeral.rpListagemAlunoBeforePrint(Sender: TObject;
+  var PrintIt: Boolean);
+begin
+  qrDados.Open;
+  qrAlunos.Open;
+  qrProfessor.Open;
+  qrDisciplina.Open;
+end;
+
+end.

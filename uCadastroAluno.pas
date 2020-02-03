@@ -40,9 +40,9 @@ implementation
 procedure TfrmCadastroAluno.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  inherited;
   qrDados.Close;
   frmCadastroAluno := nil;
+  inherited;
 end;
 
 procedure TfrmCadastroAluno.FormShow(Sender: TObject);

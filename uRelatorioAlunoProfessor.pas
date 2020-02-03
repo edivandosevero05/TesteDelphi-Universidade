@@ -46,7 +46,8 @@ type
     RLGroup1: TRLGroup;
     rlSumario: TRLBand;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure FormShow(Sender: TObject);
+    procedure rpAlunoProfessorBeforePrint(Sender: TObject;
+      var PrintIt: Boolean);
   private
     { Private declarations }
   public
@@ -65,13 +66,11 @@ uses udmPrincipal;
 procedure TfrmRelatorioAlunoProfessor.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  qrDados.Close;
-  qrProfessores.Close;
-  qrAlunos.Close;
   frmRelatorioAlunoProfessor := nil;
 end;
 
-procedure TfrmRelatorioAlunoProfessor.FormShow(Sender: TObject);
+procedure TfrmRelatorioAlunoProfessor.rpAlunoProfessorBeforePrint(
+  Sender: TObject; var PrintIt: Boolean);
 begin
   qrDados.Open;
   qrAlunos.Open;

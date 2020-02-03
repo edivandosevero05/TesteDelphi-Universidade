@@ -11,6 +11,8 @@ uses
 type
   TdmPrincipal = class(TDataModule)
     fdConn: TFDConnection;
+    procedure DataModuleCreate(Sender: TObject);
+    procedure DataModuleDestroy(Sender: TObject);
   private
     { Private declarations }
   public
@@ -25,5 +27,15 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+
+procedure TdmPrincipal.DataModuleCreate(Sender: TObject);
+begin
+  fdConn.Open;
+end;
+
+procedure TdmPrincipal.DataModuleDestroy(Sender: TObject);
+begin
+  fdConn.Close;
+end;
 
 end.

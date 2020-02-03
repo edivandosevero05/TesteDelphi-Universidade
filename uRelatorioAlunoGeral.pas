@@ -61,7 +61,7 @@ type
     rbtDisciplina: TRLDBText;
     rbtProfessor: TRLDBText;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure FormShow(Sender: TObject);
+    procedure rpListagemAlunoBeforePrint(Sender: TObject; var PrintIt: Boolean);
   private
     { Private declarations }
   public
@@ -78,14 +78,11 @@ implementation
 procedure TfrmRelatorioAlunoGeral.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
-  qrDados.Close;
-  qrAlunos.Close;
-  qrProfessor.Close;
-  qrDisciplina.Close;
   frmRelatorioAlunoGeral := nil;
 end;
 
-procedure TfrmRelatorioAlunoGeral.FormShow(Sender: TObject);
+procedure TfrmRelatorioAlunoGeral.rpListagemAlunoBeforePrint(Sender: TObject;
+  var PrintIt: Boolean);
 begin
   qrDados.Open;
   qrAlunos.Open;
