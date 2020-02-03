@@ -21,6 +21,7 @@ type
     Label2: TLabel;
     dbeCPF: TDBEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   protected
@@ -40,7 +41,14 @@ procedure TfrmCadastroProfessores.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   inherited;
+  qrDados.Close;
   frmCadastroProfessores := nil;
+end;
+
+procedure TfrmCadastroProfessores.FormShow(Sender: TObject);
+begin
+  inherited;
+  qrDados.Open;
 end;
 
 function TfrmCadastroProfessores.ValidarObrigatorios: Boolean;

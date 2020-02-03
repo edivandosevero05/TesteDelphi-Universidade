@@ -14,17 +14,7 @@ type
   TfrmRelatorioAlunos = class(TForm)
     rpAlunos: TRLReport;
     rlbTitulo: TRLBand;
-    RLLabel1: TRLLabel;
-    rlbHeader: TRLBand;
-    RLLabel2: TRLLabel;
-    RLLabel3: TRLLabel;
-    RLLabel4: TRLLabel;
-    RLLabel5: TRLLabel;
-    RLLabel6: TRLLabel;
-    RLLabel7: TRLLabel;
-    RLLabel8: TRLLabel;
-    RLLabel9: TRLLabel;
-    RLBand1: TRLBand;
+    rllTitulo: TRLLabel;
     qrDados: TFDQuery;
     dsDados: TDataSource;
     qrDadosID: TIntegerField;
@@ -36,18 +26,12 @@ type
     qrDadosNOTA_TRABLHO: TSingleField;
     qrDadosMEDIA: TSingleField;
     qrDadosSITUACAO: TStringField;
-    RLDBText1: TRLDBText;
     dsAlunos: TDataSource;
     qrAlunos: TFDQuery;
     qrAlunosID: TIntegerField;
     qrAlunosNOME: TStringField;
     qrAlunosCPF: TStringField;
     qrDadosALUNO: TStringField;
-    RLDBText2: TRLDBText;
-    RLDBText3: TRLDBText;
-    RLDBText4: TRLDBText;
-    RLDBText5: TRLDBText;
-    RLDBText6: TRLDBText;
     qrDisciplina: TFDQuery;
     dsDisciplina: TDataSource;
     qrProfessor: TFDQuery;
@@ -59,11 +43,31 @@ type
     qrProfessorCPF: TStringField;
     qrDadosDISCIPLINA: TStringField;
     qrDadosPROFESSOR: TStringField;
-    DBEdit1: TDBEdit;
-    DBEdit2: TDBEdit;
-    RLDBText7: TRLDBText;
-    RLDBText8: TRLDBText;
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    RLGroup1: TRLGroup;
+    rlTitulo2: TRLBand;
+    rllTituloSituacao: TRLLabel;
+    rbtTituloDisciplina: TRLDBText;
+    rlSumario: TRLBand;
+    rlbBtHeader: TRLBand;
+    rllAluno: TRLLabel;
+    rllDisciplina: TRLLabel;
+    rllProfessor: TRLLabel;
+    rllNota1: TRLLabel;
+    rllNota2: TRLLabel;
+    rllNotaTrabalho: TRLLabel;
+    rllMedia: TRLLabel;
+    rllSituacao: TRLLabel;
+    rlbBtDetalhes: TRLBand;
+    rbtAluno: TRLDBText;
+    rbtNota2: TRLDBText;
+    rbtNota1: TRLDBText;
+    rbtNotaTrabalho: TRLDBText;
+    rbtMedia: TRLDBText;
+    rbtSituacao: TRLDBText;
+    rbtDisciplina: TRLDBText;
+    rbtProfessor: TRLDBText;
+    procedure F(Sender: TObject; var Action: TCloseAction);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -79,11 +83,23 @@ implementation
 
 uses udmPrincipal;
 
-procedure TfrmRelatorioAlunos.FormClose(Sender: TObject;
+procedure TfrmRelatorioAlunos.F(Sender: TObject;
   var Action: TCloseAction);
 begin
+  qrDados.Close;
+  qrAlunos.Close;
+  qrProfessor.Close;
+  qrDisciplina.Close;
   frmRelatorioAlunos := nil;
 
+end;
+
+procedure TfrmRelatorioAlunos.FormShow(Sender: TObject);
+begin
+  qrDados.Open;
+  qrAlunos.Open;
+  qrProfessor.Open;
+  qrDisciplina.Open;
 end;
 
 end.

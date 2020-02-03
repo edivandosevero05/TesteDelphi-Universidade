@@ -27,9 +27,6 @@ type
     qrDadosNOTA_TRABLHO: TSingleField;
     qrDadosMEDIA: TSingleField;
     qrDadosSITUACAO: TStringField;
-    qrDadosALUNO: TStringField;
-    qrDadosPROFESSOR: TStringField;
-    qrDadosDISCIPLINA: TStringField;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
@@ -43,8 +40,12 @@ type
     lkDisciplina: TDBLookupComboBox;
     lkAluno: TDBLookupComboBox;
     qrDadosDataSource: TDataSource;
-    procedure btSalvarClick(Sender: TObject);
+    qrDadosPROFESSOR: TStringField;
+    qrDadosALUNO: TStringField;
+    qrDadosDISCIPLINA: TStringField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure qrDadosBeforePost(DataSet: TDataSet);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   protected
@@ -62,12 +63,32 @@ implementation
 
 uses udmPrincipal, uSystemutils;
 
-procedure TfrmMovimentacaoNota.btSalvarClick(Sender: TObject);
+procedure TfrmMovimentacaoNota.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  inherited;
+  qrDados.Close;
+  qrAlunos.Close;
+  qrProfessores.Close;
+  qrDisciplinas.Close;
+  frmMovimentacaoNota := nil;
+end;
+
+procedure TfrmMovimentacaoNota.FormShow(Sender: TObject);
+begin
+  inherited;
+  qrDados.Open;
+  qrAlunos.Open;
+  qrProfessores.Open;
+  qrDisciplinas.Open;
+end;
+
+procedure TfrmMovimentacaoNota.qrDadosBeforePost(DataSet: TDataSet);
 var
   nota1, nota2, nota3, media: Float32;
 begin
   inherited;
-  nota1 := StrToFloat(edPrimeiroPeriodo.Text);
+   nota1 := StrToFloat(edPrimeiroPeriodo.Text);
   nota2 := StrToFloat(edSegundoPeriodo.Text);
   nota3 := StrToFloat(edTrabalho.Text);
   media := ( nota1 + nota2  + nota3) / 3;
@@ -81,33 +102,25 @@ begin
   begin
     qrDadosSITUACAO.Value := 'Reprovado';
   end;
-
-end;
-
-procedure TfrmMovimentacaoNota.FormClose(Sender: TObject;
-  var Action: TCloseAction);
-begin
-  inherited;
-  frmMovimentacaoNota := nil;
 end;
 
 function TfrmMovimentacaoNota.ValidarObrigatorios: boolean;
 begin
   if trim(lkAluno.Text) = '' then
   begin
-    ShowMessage('Informe o nome.');
+    ShowMessage('Selecione o aluno.');
     lkAluno.SetFocus;
     Exit(false)
   end;
   if trim(lkProfessor.Text) = '' then
   begin
-    ShowMessage('Informe o nome.');
+    ShowMessage('Selecione o professor.');
     lkProfessor.SetFocus;
     Exit(false)
   end;
   if trim(lkDisciplina.Text) = '' then
   begin
-    ShowMessage('Informe o nome.');
+    ShowMessage('Selecione a disciplina.');
     lkDisciplina.SetFocus;
     Exit(false)
   end;

@@ -18,6 +18,7 @@ type
     dbeDisciplina: TDBEdit;
     qrDadosID: TFDAutoIncField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   protected
@@ -38,14 +39,21 @@ implementation
 procedure TfrmCadastroDsiciplina.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   inherited;
+  qrDados.Close;
   frmCadastroDsiciplina := nil;
+end;
+
+procedure TfrmCadastroDsiciplina.FormShow(Sender: TObject);
+begin
+  inherited;
+  qrDados.Open;
 end;
 
 function TfrmCadastroDsiciplina.ValidarObrigatorios: boolean;
 begin
   if trim(dbeDisciplina.Text) = '' then
   begin
-    ShowMessage('Informe o nome.');
+    ShowMessage('Informe a disciplina.');
     dbeDisciplina.SetFocus;
     Exit(false)
   end;

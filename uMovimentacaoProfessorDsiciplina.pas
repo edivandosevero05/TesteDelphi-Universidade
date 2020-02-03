@@ -32,6 +32,8 @@ type
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }
+  protected
+    function ValidarObrigatorios: boolean; override;
   public
     { Public declarations }
   end;
@@ -59,6 +61,23 @@ begin
   inherited;
   qrDisciplina.Open;
   qrProfessor.Open;
+end;
+
+function TfrmMovimentacaoProfessorDisciplina.ValidarObrigatorios: boolean;
+begin
+   if Trim(lkProfessor.Text) = '' then
+  begin
+    ShowMessage('Selecione o professor.');
+    lkProfessor.SetFocus;
+    Exit(false)
+  end;
+  if trim(lkDisciplina.Text) = '' then
+  begin
+    ShowMessage('Selecione a disciplina.');
+    lkDisciplina.SetFocus;
+    Exit(false)
+  end;
+  Result := inherited ValidarObrigatorios;
 end;
 
 end.

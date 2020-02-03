@@ -2,8 +2,8 @@ object frmRelatorioAlunos: TfrmRelatorioAlunos
   Left = 0
   Top = 0
   Align = alClient
-  Caption = 'frmRelatorioAlunos'
-  ClientHeight = 505
+  Caption = 'Relat'#243'rio de alunos por situa'#231#227'o'
+  ClientHeight = 565
   ClientWidth = 771
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -12,7 +12,8 @@ object frmRelatorioAlunos: TfrmRelatorioAlunos
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  OnClose = FormClose
+  OnClose = F
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object rpAlunos: TRLReport
@@ -26,296 +27,324 @@ object frmRelatorioAlunos: TfrmRelatorioAlunos
     Font.Height = -13
     Font.Name = 'Arial'
     Font.Style = []
+    object RLGroup1: TRLGroup
+      Left = 38
+      Top = 97
+      Width = 718
+      Height = 176
+      DataFields = 'SITUACAO'
+      object rlTitulo2: TRLBand
+        Left = 0
+        Top = 0
+        Width = 718
+        Height = 22
+        BandType = btHeader
+        Color = clSilver
+        ParentColor = False
+        Transparent = False
+        object rbtTituloDisciplina: TRLDBText
+          Left = 93
+          Top = 3
+          Width = 69
+          Height = 16
+          DataField = 'SITUACAO'
+          DataSource = dsDados
+          Text = ''
+          Transparent = False
+        end
+        object rllTituloSituacao: TRLLabel
+          Left = 16
+          Top = 3
+          Width = 63
+          Height = 16
+          Caption = 'Situa'#231#227'o: '
+          Transparent = False
+        end
+      end
+      object rlSumario: TRLBand
+        Left = 0
+        Top = 64
+        Width = 718
+        Height = 48
+        BandType = btSummary
+        Borders.Sides = sdCustom
+        Borders.DrawLeft = False
+        Borders.DrawTop = False
+        Borders.DrawRight = False
+        Borders.DrawBottom = True
+      end
+      object rlbBtHeader: TRLBand
+        Left = 0
+        Top = 22
+        Width = 718
+        Height = 19
+        BandType = btColumnHeader
+        Borders.Sides = sdCustom
+        Borders.DrawLeft = False
+        Borders.DrawTop = False
+        Borders.DrawRight = False
+        Borders.DrawBottom = True
+        object rllAluno: TRLLabel
+          Left = 16
+          Top = 6
+          Width = 31
+          Height = 14
+          Caption = 'Aluno'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+        end
+        object rllDisciplina: TRLLabel
+          Left = 74
+          Top = 5
+          Width = 48
+          Height = 14
+          Caption = 'Disciplina'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+        end
+        object rllProfessor: TRLLabel
+          Left = 152
+          Top = 5
+          Width = 51
+          Height = 14
+          Caption = 'Professor'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+        end
+        object rllNota1: TRLLabel
+          Left = 232
+          Top = 5
+          Width = 34
+          Height = 14
+          Caption = 'Nota 1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+        end
+        object rllNota2: TRLLabel
+          Left = 288
+          Top = 6
+          Width = 34
+          Height = 14
+          Caption = 'Nota 2'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+        end
+        object rllNotaTrabalho: TRLLabel
+          Left = 360
+          Top = 6
+          Width = 70
+          Height = 14
+          Caption = 'Nota Trabalho'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+        end
+        object rllMedia: TRLLabel
+          Left = 472
+          Top = 6
+          Width = 31
+          Height = 14
+          Caption = 'M'#233'dia'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+        end
+        object rllSituacao: TRLLabel
+          Left = 568
+          Top = 6
+          Width = 45
+          Height = 14
+          Caption = 'Situa'#231#227'o'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+        end
+      end
+      object rlbBtDetalhes: TRLBand
+        Left = 0
+        Top = 41
+        Width = 718
+        Height = 23
+        Borders.Sides = sdCustom
+        Borders.DrawLeft = False
+        Borders.DrawTop = False
+        Borders.DrawRight = False
+        Borders.DrawBottom = False
+        object rbtAluno: TRLDBText
+          Left = 16
+          Top = 6
+          Width = 39
+          Height = 14
+          DataField = 'ALUNO'
+          DataSource = dsDados
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+          Text = ''
+        end
+        object rbtNota2: TRLDBText
+          Left = 288
+          Top = 6
+          Width = 94
+          Height = 14
+          DataField = 'NOTA_PERIODO_2'
+          DataSource = dsDados
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+          Text = ''
+        end
+        object rbtNota1: TRLDBText
+          Left = 232
+          Top = 6
+          Width = 94
+          Height = 14
+          DataField = 'NOTA_PERIODO_1'
+          DataSource = dsDados
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+          Text = ''
+        end
+        object rbtNotaTrabalho: TRLDBText
+          Left = 360
+          Top = 6
+          Width = 87
+          Height = 14
+          DataField = 'NOTA_TRABLHO'
+          DataSource = dsDados
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+          Text = ''
+        end
+        object rbtMedia: TRLDBText
+          Left = 469
+          Top = 6
+          Width = 34
+          Height = 14
+          DataField = 'MEDIA'
+          DataSource = dsDados
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+          Text = ''
+        end
+        object rbtSituacao: TRLDBText
+          Left = 568
+          Top = 6
+          Width = 56
+          Height = 14
+          DataField = 'SITUACAO'
+          DataSource = dsDados
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+          Text = ''
+        end
+        object rbtDisciplina: TRLDBText
+          Left = 74
+          Top = 6
+          Width = 57
+          Height = 14
+          DataField = 'DISCIPLINA'
+          DataSource = dsDados
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+          Text = ''
+        end
+        object rbtProfessor: TRLDBText
+          Left = 152
+          Top = 6
+          Width = 65
+          Height = 14
+          DataField = 'PROFESSOR'
+          DataSource = dsDados
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          ParentFont = False
+          Text = ''
+        end
+      end
+    end
     object rlbTitulo: TRLBand
       Left = 38
       Top = 38
       Width = 718
-      Height = 43
+      Height = 59
       BandType = btHeader
       Borders.Sides = sdCustom
       Borders.DrawLeft = False
       Borders.DrawTop = False
       Borders.DrawRight = False
-      Borders.DrawBottom = True
-      object RLLabel1: TRLLabel
-        Left = 241
-        Top = 6
-        Width = 236
+      Borders.DrawBottom = False
+      object rllTitulo: TRLLabel
+        Left = 168
+        Top = 15
+        Width = 382
         Height = 29
         Align = faCenter
-        Caption = 'Listagem de Alunos'
+        Caption = 'Listagem de alunos por situa'#231#227'o'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -24
         Font.Name = 'Arial'
         Font.Style = [fsBold]
         ParentFont = False
-      end
-    end
-    object rlbHeader: TRLBand
-      Left = 38
-      Top = 81
-      Width = 718
-      Height = 32
-      BandType = btColumnHeader
-      Borders.Sides = sdCustom
-      Borders.DrawLeft = False
-      Borders.DrawTop = False
-      Borders.DrawRight = False
-      Borders.DrawBottom = True
-      object RLLabel2: TRLLabel
-        Left = 16
-        Top = 15
-        Width = 31
-        Height = 14
-        Caption = 'Aluno'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-      end
-      object RLLabel3: TRLLabel
-        Left = 74
-        Top = 14
-        Width = 48
-        Height = 14
-        Caption = 'Disciplina'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-      end
-      object RLLabel4: TRLLabel
-        Left = 152
-        Top = 14
-        Width = 51
-        Height = 14
-        Caption = 'Professor'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-      end
-      object RLLabel5: TRLLabel
-        Left = 232
-        Top = 14
-        Width = 34
-        Height = 14
-        Caption = 'Nota 1'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-      end
-      object RLLabel6: TRLLabel
-        Left = 288
-        Top = 15
-        Width = 34
-        Height = 14
-        Caption = 'Nota 2'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-      end
-      object RLLabel7: TRLLabel
-        Left = 360
-        Top = 15
-        Width = 70
-        Height = 14
-        Caption = 'Nota Trabalho'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-      end
-      object RLLabel8: TRLLabel
-        Left = 472
-        Top = 15
-        Width = 31
-        Height = 14
-        Caption = 'M'#233'dia'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-      end
-      object RLLabel9: TRLLabel
-        Left = 568
-        Top = 15
-        Width = 45
-        Height = 14
-        Caption = 'Situa'#231#227'o'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-      end
-    end
-    object RLBand1: TRLBand
-      Left = 38
-      Top = 113
-      Width = 718
-      Height = 24
-      Borders.Sides = sdCustom
-      Borders.DrawLeft = False
-      Borders.DrawTop = False
-      Borders.DrawRight = False
-      Borders.DrawBottom = True
-      Borders.FixedBottom = True
-      object RLDBText1: TRLDBText
-        Left = 16
-        Top = 6
-        Width = 39
-        Height = 14
-        DataField = 'ALUNO'
-        DataSource = dsDados
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        Text = ''
-      end
-      object RLDBText2: TRLDBText
-        Left = 288
-        Top = 6
-        Width = 94
-        Height = 14
-        DataField = 'NOTA_PERIODO_2'
-        DataSource = dsDados
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        Text = ''
-      end
-      object RLDBText3: TRLDBText
-        Left = 232
-        Top = 6
-        Width = 94
-        Height = 14
-        DataField = 'NOTA_PERIODO_1'
-        DataSource = dsDados
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        Text = ''
-      end
-      object RLDBText4: TRLDBText
-        Left = 360
-        Top = 6
-        Width = 87
-        Height = 14
-        DataField = 'NOTA_TRABLHO'
-        DataSource = dsDados
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        Text = ''
-      end
-      object RLDBText5: TRLDBText
-        Left = 469
-        Top = 6
-        Width = 34
-        Height = 14
-        DataField = 'MEDIA'
-        DataSource = dsDados
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        Text = ''
-      end
-      object RLDBText6: TRLDBText
-        Left = 568
-        Top = 6
-        Width = 56
-        Height = 14
-        DataField = 'SITUACAO'
-        DataSource = dsDados
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        Text = ''
-      end
-      object DBEdit1: TDBEdit
-        Left = 88
-        Top = 24
-        Width = 264
-        Height = 24
-        DataField = 'DISCIPLINA'
-        DataSource = dsDados
-        TabOrder = 6
-      end
-      object DBEdit2: TDBEdit
-        Left = 168
-        Top = 24
-        Width = 264
-        Height = 24
-        DataField = 'PROFESSOR'
-        DataSource = dsDados
-        TabOrder = 7
-      end
-      object RLDBText7: TRLDBText
-        Left = 74
-        Top = 6
-        Width = 57
-        Height = 14
-        DataField = 'DISCIPLINA'
-        DataSource = dsDados
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        Text = ''
-      end
-      object RLDBText8: TRLDBText
-        Left = 152
-        Top = 6
-        Width = 65
-        Height = 14
-        DataField = 'PROFESSOR'
-        DataSource = dsDados
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -11
-        Font.Name = 'Arial'
-        Font.Style = []
-        ParentFont = False
-        Text = ''
       end
     end
   end

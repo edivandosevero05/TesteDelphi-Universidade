@@ -142,8 +142,12 @@
             <Form>frmRelatorioAlunos</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="uRelatorioAlunosProfessores.pas">
-            <Form>frmRelatorioAlunosProfessores</Form>
+        <DCCReference Include="uRelatorioAlunoProfessor.pas">
+            <Form>frmRelatorioAlunoProfessor</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uRelatorioAlunoGeral.pas">
+            <Form>frmRelatorioAlunoGeral</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

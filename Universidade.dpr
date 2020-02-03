@@ -13,7 +13,8 @@ uses
   uMovimentacaoAlunoDsiciplina in 'uMovimentacaoAlunoDsiciplina.pas' {frmMovimentacaoAlunoDisciplina},
   uMovimentacaoNota in 'uMovimentacaoNota.pas' {frmMovimentacaoNota},
   uRelatorioAlunos in 'uRelatorioAlunos.pas' {frmRelatorioAlunos},
-  uRelatorioAlunosProfessores in 'uRelatorioAlunosProfessores.pas' {frmRelatorioAlunosProfessores};
+  uRelatorioAlunoProfessor in 'uRelatorioAlunoProfessor.pas' {frmRelatorioAlunoProfessor},
+  uRelatorioAlunoGeral in 'uRelatorioAlunoGeral.pas' {frmRelatorioAlunoGeral};
 
 {$R *.res}
 
@@ -22,6 +23,5 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TdmPrincipal, dmPrincipal);
-  Application.CreateForm(TfrmRelatorioAlunosProfessores, frmRelatorioAlunosProfessores);
   Application.Run;
 end.

@@ -20,6 +20,7 @@ type
     AlunoDisciplina1: TMenuItem;
     Alunos2: TMenuItem;
     AlunosxProfessores1: TMenuItem;
+    Alunos3: TMenuItem;
     procedure Disciplinas1Click(Sender: TObject);
     procedure Professores1Click(Sender: TObject);
     procedure Alunos1Click(Sender: TObject);
@@ -27,6 +28,7 @@ type
     procedure AlunoDisciplina1Click(Sender: TObject);
     procedure Alunos2Click(Sender: TObject);
     procedure AlunosxProfessores1Click(Sender: TObject);
+    procedure Alunos3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -42,7 +44,8 @@ implementation
 
 uses uCadastroDisciplina, uCadastroProfessor, uCadastroAluno,
   uMovimentacaoProfessorDsiciplina, uMovimentacaoAlunoDsiciplina,
-  uRelatorioAlunos, uMovimentacaoNota, uRelatorioAlunosProfessores;
+  uRelatorioAlunos, uMovimentacaoNota, uRelatorioAlunoProfessor,
+  uRelatorioAlunoGeral;
 
 procedure TfrmPrincipal.AlunoDisciplina1Click(Sender: TObject);
 begin
@@ -68,12 +71,20 @@ begin
   frmRelatorioAlunos.rpAlunos.Preview;
 end;
 
+procedure TfrmPrincipal.Alunos3Click(Sender: TObject);
+begin
+  if frmRelatorioAlunoGeral = nil then
+    frmRelatorioAlunoGeral := TfrmRelatorioAlunoGeral.Create(Self);
+
+  frmRelatorioAlunoGeral.rpListagemAluno.Preview;
+end;
+
 procedure TfrmPrincipal.AlunosxProfessores1Click(Sender: TObject);
 begin
-  if frmRelatorioAlunosProfessores = nil then
-    frmRelatorioAlunosProfessores := TfrmRelatorioAlunosProfessores.Create(Self);
+  if frmRelatorioAlunoProfessor = nil then
+    frmRelatorioAlunoProfessor := TfrmRelatorioAlunoProfessor.Create(Self);
 
-  frmRelatorioAlunosProfessores.rpAlunosProfessores.Preview;
+  frmRelatorioAlunoProfessor.RLReport1.Preview;
 end;
 
 procedure TfrmPrincipal.Disciplinas1Click(Sender: TObject);
