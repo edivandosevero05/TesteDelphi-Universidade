@@ -39,13 +39,19 @@ type
     lkProfessor: TDBLookupComboBox;
     lkDisciplina: TDBLookupComboBox;
     lkAluno: TDBLookupComboBox;
-    qrDadosDataSource: TDataSource;
+    dsDisciplinaAuxiliar: TDataSource;
     qrDadosPROFESSOR: TStringField;
     qrDadosALUNO: TStringField;
     qrDadosDISCIPLINA: TStringField;
+    qrDisciplinaAuxiliar: TFDQuery;
+    qrDisciplinaAuxiliarDISCIPLINA_ID: TIntegerField;
+    qrDisciplinaAuxiliarPROFESSOR_ID: TIntegerField;
+    qrDisciplinaAuxiliardis123: TStringField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure qrDadosBeforePost(DataSet: TDataSet);
     procedure FormShow(Sender: TObject);
+    procedure lkDisciplinaEnter(Sender: TObject);
+    procedure lkProfessorExit(Sender: TObject);
   private
     { Private declarations }
   protected
@@ -56,6 +62,7 @@ type
 
 var
   frmMovimentacaoNota: TfrmMovimentacaoNota;
+  disciplinaID: Integer;
 
 implementation
 
@@ -83,12 +90,27 @@ begin
   qrDisciplinas.Open;
 end;
 
+procedure TfrmMovimentacaoNota.lkDisciplinaEnter(Sender: TObject);
+begin
+  inherited;
+  qrDisciplinaAuxiliar.Close;
+  qrDisciplinaAuxiliar.ParamByName('PROFESSORID').AsInteger := qrDadosPROFESSOR_ID.Value;
+  qrDisciplinaAuxiliar.Open;
+end;
+
+procedure TfrmMovimentacaoNota.lkProfessorExit(Sender: TObject);
+begin
+  inherited;
+  //qrProfessorAuxiliar.Close;
+  //qrProfessorAuxiliar.ParamByName('PROFESSORID').AsInteger := qrDadosPROFESSOR_ID.Value;
+end;
+
 procedure TfrmMovimentacaoNota.qrDadosBeforePost(DataSet: TDataSet);
 var
   nota1, nota2, nota3, media: Float32;
 begin
   inherited;
-   nota1 := StrToFloat(edPrimeiroPeriodo.Text);
+  nota1 := StrToFloat(edPrimeiroPeriodo.Text);
   nota2 := StrToFloat(edSegundoPeriodo.Text);
   nota3 := StrToFloat(edTrabalho.Text);
   media := ( nota1 + nota2  + nota3) / 3;

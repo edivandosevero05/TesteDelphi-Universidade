@@ -10,9 +10,8 @@ uses
   uCadastroDisciplina in 'uCadastroDisciplina.pas' {frmCadastroDsiciplina},
   uCadastroAluno in 'uCadastroAluno.pas' {frmCadastroAluno},
   uMovimentacaoProfessorDsiciplina in 'uMovimentacaoProfessorDsiciplina.pas' {frmMovimentacaoProfessorDisciplina},
-  uMovimentacaoAlunoDsiciplina in 'uMovimentacaoAlunoDsiciplina.pas' {frmMovimentacaoAlunoDisciplina},
   uMovimentacaoNota in 'uMovimentacaoNota.pas' {frmMovimentacaoNota},
-  uRelatorioAlunos in 'uRelatorioAlunos.pas' {frmRelatorioAlunos},
+  uRelatorioAlunosSituacao in 'uRelatorioAlunosSituacao.pas' {frmRelatorioAlunos},
   uRelatorioAlunoProfessor in 'uRelatorioAlunoProfessor.pas' {frmRelatorioAlunoProfessor},
   uRelatorioAlunoGeral in 'uRelatorioAlunoGeral.pas' {frmRelatorioAlunoGeral};
 

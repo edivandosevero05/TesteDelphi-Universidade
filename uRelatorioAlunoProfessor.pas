@@ -13,14 +13,14 @@ type
   TfrmRelatorioAlunoProfessor = class(TForm)
     qrDados: TFDQuery;
     dsDados: TDataSource;
-    RLReport1: TRLReport;
-    RLBand1: TRLBand;
-    RLLabel1: TRLLabel;
-    RLBand2: TRLBand;
-    RLLabel2: TRLLabel;
-    RLLabel3: TRLLabel;
-    RLBand3: TRLBand;
-    RLDBText1: TRLDBText;
+    rpAlunoProfessor: TRLReport;
+    rlbHeader: TRLBand;
+    rllTitulo: TRLLabel;
+    rbbBtHeader: TRLBand;
+    rllAluno: TRLLabel;
+    rllProfessor: TRLLabel;
+    rlBtDetalhes: TRLBand;
+    rbtAluno: TRLDBText;
     qrAlunos: TFDQuery;
     dsAlunos: TDataSource;
     qrDadosID: TIntegerField;
@@ -41,8 +41,10 @@ type
     qrProfessoresID: TIntegerField;
     qrProfessoresNOME: TStringField;
     qrProfessoresCPF: TStringField;
-    RLDBText2: TRLDBText;
+    rbtProfessor: TRLDBText;
     qrDadosPROFESSORES: TStringField;
+    RLGroup1: TRLGroup;
+    rlSumario: TRLBand;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
   private
@@ -74,6 +76,7 @@ begin
   qrDados.Open;
   qrAlunos.Open;
   qrProfessores.Open;
+  qrDados.Refresh;
 end;
 
 end.

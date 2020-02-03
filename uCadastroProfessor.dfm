@@ -45,7 +45,7 @@ inherited frmCadastroProfessores: TfrmCadastroProfessores
       end
       object dbeNome: TDBEdit
         Left = 3
-        Top = 31
+        Top = 29
         Width = 300
         Height = 21
         DataField = 'NOME'

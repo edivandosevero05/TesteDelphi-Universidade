@@ -44,8 +44,8 @@ implementation
 
 uses uCadastroDisciplina, uCadastroProfessor, uCadastroAluno,
   uMovimentacaoProfessorDsiciplina, uMovimentacaoAlunoDsiciplina,
-  uRelatorioAlunos, uMovimentacaoNota, uRelatorioAlunoProfessor,
-  uRelatorioAlunoGeral;
+  uMovimentacaoNota, uRelatorioAlunoProfessor,
+  uRelatorioAlunoGeral, uRelatorioAlunosSituacao;
 
 procedure TfrmPrincipal.AlunoDisciplina1Click(Sender: TObject);
 begin
@@ -84,7 +84,7 @@ begin
   if frmRelatorioAlunoProfessor = nil then
     frmRelatorioAlunoProfessor := TfrmRelatorioAlunoProfessor.Create(Self);
 
-  frmRelatorioAlunoProfessor.RLReport1.Preview;
+  frmRelatorioAlunoProfessor.rpAlunoProfessor.Preview;
 end;
 
 procedure TfrmPrincipal.Disciplinas1Click(Sender: TObject);

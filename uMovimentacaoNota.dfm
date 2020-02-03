@@ -3,6 +3,7 @@ inherited frmMovimentacaoNota: TfrmMovimentacaoNota
   PixelsPerInch = 96
   TextHeight = 13
   inherited pcPrincipal: TPageControl
+    ActivePage = tsEdits
     inherited tsGrid: TTabSheet
       ExplicitLeft = 4
       ExplicitTop = 24
@@ -105,10 +106,11 @@ inherited frmMovimentacaoNota: TfrmMovimentacaoNota
         Height = 21
         DataField = 'DISCIPLINA_ID'
         DataSource = dsDados
-        KeyField = 'ID'
+        KeyField = 'DISCIPLINA_ID'
         ListField = 'DISCIPLINA'
-        ListSource = dsDisciplinas
+        ListSource = dsDisciplinaAuxiliar
         TabOrder = 5
+        OnEnter = lkDisciplinaEnter
       end
       object lkProfessor: TDBLookupComboBox
         Left = 32
@@ -121,6 +123,7 @@ inherited frmMovimentacaoNota: TfrmMovimentacaoNota
         ListField = 'NOME'
         ListSource = dsProfessores
         TabOrder = 6
+        OnExit = lkProfessorExit
       end
     end
   end
@@ -243,9 +246,45 @@ inherited frmMovimentacaoNota: TfrmMovimentacaoNota
     Left = 468
     Top = 288
   end
-  object qrDadosDataSource: TDataSource
-    DataSet = qrAlunos
-    Left = 324
-    Top = 344
+  object dsDisciplinaAuxiliar: TDataSource
+    DataSet = qrDisciplinaAuxiliar
+    Left = 220
+    Top = 352
+  end
+  object qrDisciplinaAuxiliar: TFDQuery
+    Connection = dmPrincipal.fdConn
+    SQL.Strings = (
+      
+        'SELECT * FROM DISCIPLINAS_PROFESSORES WHERE PROFESSOR_ID = :PROF' +
+        'ESSORID; ')
+    Left = 220
+    Top = 296
+    ParamData = <
+      item
+        Name = 'PROFESSORID'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+    object qrDisciplinaAuxiliarDISCIPLINA_ID: TIntegerField
+      FieldName = 'DISCIPLINA_ID'
+      Origin = 'DISCIPLINA_ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qrDisciplinaAuxiliarPROFESSOR_ID: TIntegerField
+      FieldName = 'PROFESSOR_ID'
+      Origin = 'PROFESSOR_ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qrDisciplinaAuxiliardis123: TStringField
+      FieldKind = fkLookup
+      FieldName = 'DISCIPLINA'
+      LookupDataSet = qrDisciplinas
+      LookupKeyFields = 'ID'
+      LookupResultField = 'DISCIPLINA'
+      KeyFields = 'DISCIPLINA_ID'
+      Lookup = True
+    end
   end
 end

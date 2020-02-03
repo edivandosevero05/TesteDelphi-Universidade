@@ -130,15 +130,11 @@
             <Form>frmMovimentacaoProfessorDisciplina</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="uMovimentacaoAlunoDsiciplina.pas">
-            <Form>frmMovimentacaoAlunoDisciplina</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="uMovimentacaoNota.pas">
             <Form>frmMovimentacaoNota</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="uRelatorioAlunos.pas">
+        <DCCReference Include="uRelatorioAlunosSituacao.pas">
             <Form>frmRelatorioAlunos</Form>
             <FormType>dfm</FormType>
         </DCCReference>
@@ -150,6 +146,7 @@
             <Form>frmRelatorioAlunoGeral</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <None Include="EstruturaDoBancoDeDados.txt"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -176,6 +173,12 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
+                <DeployFile LocalName="New1.txt" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Win32\Debug\Universidade.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>Universidade.exe</RemoteName>

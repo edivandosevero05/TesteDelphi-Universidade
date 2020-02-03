@@ -11,8 +11,8 @@ inherited frmCadastroAluno: TfrmCadastroAluno
       ExplicitHeight = 411
     end
     inherited tsEdits: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
+      ExplicitLeft = 8
+      ExplicitTop = 28
       ExplicitWidth = 639
       ExplicitHeight = 411
       object Label1: TLabel [0]
@@ -21,7 +21,6 @@ inherited frmCadastroAluno: TfrmCadastroAluno
         Width = 33
         Height = 16
         Caption = 'Nome'
-        FocusControl = dbeNome
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
@@ -37,21 +36,21 @@ inherited frmCadastroAluno: TfrmCadastroAluno
         Caption = 'CPF'
         FocusControl = dbeCPF
       end
-      object dbeNome: TDBEdit
-        Left = 3
-        Top = 34
-        Width = 394
-        Height = 21
-        DataField = 'NOME'
-        DataSource = dsDados
-        TabOrder = 1
-      end
       object dbeCPF: TDBEdit
         Left = 3
         Top = 72
-        Width = 394
+        Width = 300
         Height = 21
         DataField = 'CPF'
+        DataSource = dsDados
+        TabOrder = 1
+      end
+      object dbeNome: TDBEdit
+        Left = 3
+        Top = 32
+        Width = 300
+        Height = 21
+        DataField = 'NOME'
         DataSource = dsDados
         TabOrder = 2
       end
@@ -66,7 +65,6 @@ inherited frmCadastroAluno: TfrmCadastroAluno
       FieldName = 'NOME'
       Origin = 'Nome'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      ReadOnly = True
       Required = True
       Size = 100
     end

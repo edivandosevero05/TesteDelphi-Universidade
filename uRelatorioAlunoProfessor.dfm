@@ -15,7 +15,7 @@ object frmRelatorioAlunoProfessor: TfrmRelatorioAlunoProfessor
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object RLReport1: TRLReport
+  object rpAlunoProfessor: TRLReport
     Left = 8
     Top = 0
     Width = 794
@@ -26,13 +26,13 @@ object frmRelatorioAlunoProfessor: TfrmRelatorioAlunoProfessor
     Font.Height = -13
     Font.Name = 'Arial'
     Font.Style = []
-    object RLBand1: TRLBand
+    object rlbHeader: TRLBand
       Left = 38
       Top = 38
       Width = 718
       Height = 67
       BandType = btHeader
-      object RLLabel1: TRLLabel
+      object rllTitulo: TRLLabel
         Left = 194
         Top = 19
         Width = 329
@@ -47,59 +47,84 @@ object frmRelatorioAlunoProfessor: TfrmRelatorioAlunoProfessor
         ParentFont = False
       end
     end
-    object RLBand2: TRLBand
+    object RLGroup1: TRLGroup
       Left = 38
       Top = 105
       Width = 718
-      Height = 32
-      BandType = btColumnHeader
-      Borders.Sides = sdCustom
-      Borders.DrawLeft = False
-      Borders.DrawTop = False
-      Borders.DrawRight = False
-      Borders.DrawBottom = True
-      object RLLabel2: TRLLabel
-        Left = 40
-        Top = 8
-        Width = 37
-        Height = 16
-        Caption = 'Aluno'
+      Height = 144
+      DataFields = 'PROFESSORES'
+      object rbbBtHeader: TRLBand
+        Left = 0
+        Top = 0
+        Width = 718
+        Height = 43
+        BandType = btColumnHeader
+        Borders.Sides = sdCustom
+        Borders.DrawLeft = False
+        Borders.DrawTop = False
+        Borders.DrawRight = False
+        Borders.DrawBottom = True
+        Color = clMenuBar
+        ParentColor = False
+        Transparent = False
+        object rllProfessor: TRLLabel
+          Left = 16
+          Top = 3
+          Width = 67
+          Height = 16
+          Caption = 'Professor: '
+          Transparent = False
+        end
+        object rbtProfessor: TRLDBText
+          Left = 96
+          Top = 3
+          Width = 104
+          Height = 16
+          DataField = 'PROFESSORES'
+          DataSource = dsDados
+          Text = ''
+          Transparent = False
+        end
+        object rllAluno: TRLLabel
+          Left = 16
+          Top = 23
+          Width = 48
+          Height = 16
+          Caption = 'Alunos:'
+          Transparent = False
+        end
       end
-      object RLLabel3: TRLLabel
-        Left = 296
-        Top = 6
-        Width = 59
-        Height = 16
-        Caption = 'Professor'
+      object rlBtDetalhes: TRLBand
+        Left = 0
+        Top = 43
+        Width = 718
+        Height = 22
+        Borders.Sides = sdCustom
+        Borders.DrawLeft = False
+        Borders.DrawTop = False
+        Borders.DrawRight = False
+        Borders.DrawBottom = False
+        object rbtAluno: TRLDBText
+          Left = 16
+          Top = 6
+          Width = 57
+          Height = 16
+          DataField = 'ALUNOS'
+          DataSource = dsDados
+          Text = ''
+        end
       end
-    end
-    object RLBand3: TRLBand
-      Left = 38
-      Top = 137
-      Width = 718
-      Height = 24
-      Borders.Sides = sdCustom
-      Borders.DrawLeft = False
-      Borders.DrawTop = False
-      Borders.DrawRight = False
-      Borders.DrawBottom = True
-      object RLDBText1: TRLDBText
-        Left = 40
-        Top = 6
-        Width = 57
-        Height = 16
-        DataField = 'ALUNOS'
-        DataSource = dsDados
-        Text = ''
-      end
-      object RLDBText2: TRLDBText
-        Left = 296
-        Top = 6
-        Width = 104
-        Height = 16
-        DataField = 'PROFESSORES'
-        DataSource = dsDados
-        Text = ''
+      object rlSumario: TRLBand
+        Left = 0
+        Top = 65
+        Width = 718
+        Height = 32
+        BandType = btSummary
+        Borders.Sides = sdCustom
+        Borders.DrawLeft = False
+        Borders.DrawTop = False
+        Borders.DrawRight = False
+        Borders.DrawBottom = True
       end
     end
   end

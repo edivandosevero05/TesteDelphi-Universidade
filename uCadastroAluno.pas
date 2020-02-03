@@ -17,9 +17,9 @@ type
     qrDadosCPF: TStringField;
     qrDadosID: TFDAutoIncField;
     Label1: TLabel;
-    dbeNome: TDBEdit;
     Label2: TLabel;
     dbeCPF: TDBEdit;
+    dbeNome: TDBEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
   private

@@ -50,14 +50,14 @@ object frmPrincipal: TfrmPrincipal
         OnClick = ProfessorDisciplina1Click
       end
       object AlunoDisciplina1: TMenuItem
-        Caption = 'Notas'
+        Caption = 'Alunos'
         OnClick = AlunoDisciplina1Click
       end
     end
     object Relatrios1: TMenuItem
       Caption = 'Relat'#243'rios'
       object Alunos3: TMenuItem
-        Caption = 'Alunos'
+        Caption = 'Alunos (Listagem geral)'
         OnClick = Alunos3Click
       end
       object Alunos2: TMenuItem
