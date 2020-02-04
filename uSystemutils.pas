@@ -4,6 +4,7 @@ interface
 
 function MsgConfirm(aMessage: string): boolean;
 procedure MsgWarning(aMessage: string);
+function ENumeroDecimal(Key: Char): boolean;
 
 implementation
 
@@ -18,6 +19,11 @@ end;
 procedure MsgWarning(aMessage: string);
 begin
   Application.MessageBox(PWideChar(aMessage), 'Universidade', MB_OK + MB_ICONWARNING);
+end;
+
+function ENumeroDecimal(Key: Char): boolean;
+begin
+  Result := CharInSet(Key, ['0'..'9',',']);
 end;
 
 end.

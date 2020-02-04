@@ -1,0 +1,29 @@
+unit uSystemUtils;
+
+interface
+
+function MsgConfirm(aMessage: string): boolean;
+procedure MsgWarning(aMessage: string);
+function ENumero(Key: Char): boolean;
+
+implementation
+
+uses
+  Vcl.Forms, Winapi.Windows, System.SysUtils;
+
+function MsgConfirm(aMessage: string): boolean;
+begin
+  Result := Application.MessageBox(PWideChar(aMessage), 'Universidade', MB_YESNO + MB_ICONQUESTION + MB_DEFBUTTON2) = ID_YES;
+end;
+
+procedure MsgWarning(aMessage: string);
+begin
+  Application.MessageBox(PWideChar(aMessage), 'Universidade', MB_OK + MB_ICONWARNING);
+end;
+
+function ENumero(Key: Char): boolean;
+begin
+  Result := CharInSet(Key, ['0'..'9'..',');
+end;
+
+end.

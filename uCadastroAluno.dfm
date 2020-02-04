@@ -11,8 +11,8 @@ inherited frmCadastroAluno: TfrmCadastroAluno
       ExplicitHeight = 411
     end
     inherited tsEdits: TTabSheet
-      ExplicitLeft = 8
-      ExplicitTop = 28
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 639
       ExplicitHeight = 411
       object Label1: TLabel [0]
@@ -38,7 +38,7 @@ inherited frmCadastroAluno: TfrmCadastroAluno
       end
       object dbeCPF: TDBEdit
         Left = 3
-        Top = 72
+        Top = 75
         Width = 300
         Height = 21
         DataField = 'CPF'

@@ -51,6 +51,9 @@ type
     procedure qrDadosBeforePost(DataSet: TDataSet);
     procedure FormShow(Sender: TObject);
     procedure lkDisciplinaEnter(Sender: TObject);
+    procedure edPrimeiroPeriodoKeyPress(Sender: TObject; var Key: Char);
+    procedure edSegundoPeriodoKeyPress(Sender: TObject; var Key: Char);
+    procedure edTrabalhoKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   protected
@@ -68,6 +71,30 @@ implementation
 {$R *.dfm}
 
 uses udmPrincipal, uSystemutils;
+
+procedure TfrmMovimentacaoNota.edPrimeiroPeriodoKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  inherited;
+  if not(ENumeroDecimal(Key)) then
+    Key := #0;
+end;
+
+procedure TfrmMovimentacaoNota.edSegundoPeriodoKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  inherited;
+  if not(ENumeroDecimal(Key)) then
+    Key := #0
+end;
+
+procedure TfrmMovimentacaoNota.edTrabalhoKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  inherited;
+  if not(ENumeroDecimal(Key)) then
+    Key := #0
+end;
 
 procedure TfrmMovimentacaoNota.FormClose(Sender: TObject;
   var Action: TCloseAction);

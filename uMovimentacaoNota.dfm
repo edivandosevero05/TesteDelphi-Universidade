@@ -68,6 +68,7 @@ inherited frmMovimentacaoNota: TfrmMovimentacaoNota
         DataField = 'NOTA_PERIODO_1'
         DataSource = dsDados
         TabOrder = 1
+        OnKeyPress = edPrimeiroPeriodoKeyPress
       end
       object edSegundoPeriodo: TDBEdit
         Left = 32
@@ -77,6 +78,7 @@ inherited frmMovimentacaoNota: TfrmMovimentacaoNota
         DataField = 'NOTA_PERIODO_2'
         DataSource = dsDados
         TabOrder = 2
+        OnKeyPress = edSegundoPeriodoKeyPress
       end
       object edTrabalho: TDBEdit
         Left = 32
@@ -86,6 +88,7 @@ inherited frmMovimentacaoNota: TfrmMovimentacaoNota
         DataField = 'NOTA_TRABLHO'
         DataSource = dsDados
         TabOrder = 3
+        OnKeyPress = edTrabalhoKeyPress
       end
       object lkAluno: TDBLookupComboBox
         Left = 32
